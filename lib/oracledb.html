@@ -7,6 +7,10 @@
     </div>
     <div id="node-config-oracle-server-tabs-content" style="min-height: 170px;">
         <div id="oracle-server-tab-connection" style="display:none">
+			<div class="form-row">
+                  <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+                  <input type="text" id="node-config-input-name" placeholder="Name">
+            </div>
             <div class="form-row">
                 <label for="node-config-input-host"><i class="fa fa-globe"></i> Server</label>
                 <input class="input-append-left" type="text" id="node-config-input-host" placeholder="localhost" style="width: 40%">
@@ -120,6 +124,7 @@
 RED.nodes.registerType("oracle-server", {
     category: "config",
     defaults: {
+    	name: { value: "" },
         host: { value: "localhost" },
         port: { value: 1521, validate: RED.validators.number() },
         reconnect: { value: true },
@@ -131,7 +136,7 @@ RED.nodes.registerType("oracle-server", {
         password: { type: "password" }
     },
     label: function () {
-        return (this.host || "localhost") + (this.port ? ":" + this.port : "") + (this.db ? "/" + this.db : "");
+        return this.name || (this.host || "localhost") + (this.port ? ":" + this.port : "") + (this.db ? "/" + this.db : "");
     },
     oneditprepare: function () {
         var tabs = RED.tabs.create({
