@@ -73,4 +73,4 @@ The roadmap section describes things that I want to add or change in the (hopefu
 
 ### Realized
 - Make it an input and output node:
-  - Add support to return SELECT query results
+  - Add support to return SELECT query results 
